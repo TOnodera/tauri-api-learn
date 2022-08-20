@@ -1,11 +1,12 @@
 import Menu from "../menu/Menu";
-
-export default function Header(){
-    return (
-        <>
-            <header>
-                <Menu />
-            </header>
-        </>
-    )
+import Logo from "./logo/Logo";
+export default function Header() {
+  return (
+    <>
+      <header>
+        <Menu />
+        <Logo />
+      </header>
+    </>
+  );
 }

@@ -8,9 +8,8 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import MenuIcon from "@mui/icons-material/Menu";
+import AdjustIcon from "@mui/icons-material/Adjust";
 type Anchor = "top" | "left" | "bottom" | "right";
 
 export default function SwipeableTemporaryDrawer() {
@@ -37,10 +36,23 @@ export default function SwipeableTemporaryDrawer() {
     };
 
   const anchor = "left";
+  const menus = [
+    {
+      name: "app",
+    },
+    {
+      name: "cli",
+    },
+    {
+      name: "clipboard",
+    },
+  ];
 
   return (
     <div>
-      <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+      <Button onClick={toggleDrawer(anchor, true)}>
+        <MenuIcon />
+      </Button>
       <SwipeableDrawer
         anchor={anchor}
         open={state[anchor]}
@@ -48,13 +60,13 @@ export default function SwipeableTemporaryDrawer() {
         onOpen={toggleDrawer(anchor, true)}
       >
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
+          {menus.map((menu) => (
+            <ListItem key={menu.name} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  <AdjustIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={menu.name} />
               </ListItemButton>
             </ListItem>
           ))}
