@@ -8,9 +8,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdjustIcon from "@mui/icons-material/Adjust";
+import { Link } from "react-router-dom";
+
 type Anchor = "top" | "left" | "bottom" | "right";
 
-export default function SwipeableTemporaryDrawer() {
+interface Props {
+  menus: { name: string; path: string }[];
+}
+
+export default function SwipeableTemporaryDrawer(props: Props) {
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -34,17 +40,6 @@ export default function SwipeableTemporaryDrawer() {
     };
 
   const anchor = "left";
-  const menus = [
-    {
-      name: "app",
-    },
-    {
-      name: "cli",
-    },
-    {
-      name: "clipboard",
-    },
-  ];
 
   return (
     <div>
@@ -58,13 +53,15 @@ export default function SwipeableTemporaryDrawer() {
         onOpen={toggleDrawer(anchor, true)}
       >
         <List>
-          {menus.map((menu) => (
+          {props.menus.map((menu) => (
             <ListItem key={menu.name} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
-                  <AdjustIcon />
-                </ListItemIcon>
-                <ListItemText primary={menu.name} />
+                <Link to={menu.path}>
+                  <ListItemIcon>
+                    <AdjustIcon />
+                  </ListItemIcon>
+                  <ListItemText primary={menu.name} />
+                </Link>
               </ListItemButton>
             </ListItem>
           ))}
