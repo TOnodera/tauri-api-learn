@@ -9,6 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import AdjustIcon from "@mui/icons-material/Adjust";
 import { Link } from "react-router-dom";
+import "./style.scss";
 
 type Anchor = "top" | "left" | "bottom" | "right";
 
@@ -58,9 +59,11 @@ export default function SwipeableTemporaryDrawer(props: Props) {
               <ListItemButton>
                 <Link to={menu.path}>
                   <ListItemIcon>
-                    <AdjustIcon />
+                    <div className="menuBar">
+                      <AdjustIcon className="icon" />
+                      <ListItemText primary={menu.name} />
+                    </div>
                   </ListItemIcon>
-                  <ListItemText primary={menu.name} />
                 </Link>
               </ListItemButton>
             </ListItem>
