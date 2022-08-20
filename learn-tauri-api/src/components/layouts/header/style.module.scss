@@ -1,0 +1,10 @@
+.headerTitleWrapper{
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    .headerTitle{
+        display: flex;
+        align-items: center;
+        padding: 6px 0;
+    }
+}
