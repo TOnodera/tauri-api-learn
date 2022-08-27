@@ -14,6 +14,10 @@ export default function Menu() {
       name: "clipboard",
       path: "clipboard",
     },
+    {
+      name: "cpu",
+      path: "cpu",
+    },
   ];
   return <Drawer menus={menus} />;
 }
